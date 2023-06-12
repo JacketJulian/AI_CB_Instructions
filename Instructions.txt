@@ -1,0 +1,147 @@
+--------***Welcome to the AI Color Book Project***------------
+
+The pre-requisites to this are the following:
+
+Make sure you've setup Windows 11 on your device. **
+
+
+Once Windows 11 is successfully setup, what you want to do is to go to:
+
+https://pop.system76.com/ (Go to Download, should be an indicator button0
+
+Download the version 22.04 LTS (NVIDIA), if you're using an Nvidia GPU
+
+Download the version 22.04 LTS, if you're not using an Nvidia GPU
+
+Since we're going to be using Nvidia proprietary tech and we have Nvidia GPUs,
+we're going to be downloading the Nvidia variant.
+
+Okay, once you're finished with downloading PopOS, or while you're downloading--
+download some kind of software to write the PopOS .iso image to a drive.
+
+I'd recommend balena etcher, so here's the download page for that:
+https://etcher.balena.io/ (press the download indicator button)
+
+Once you've both finished installing Etcher and the PopOS.iso image,
+open up the Etcher application.
+
+You should see a few options on screen, since we're using a .iso image,
+select 'Flash from file' and select the .iso image.
+
+Following this select, 'Select target' and select whatever external device
+you plan to turn into a bootable drive (In our case it'd be a USB Stick).
+
+Once you've both selected the .iso image and selected the USB Stick, press
+'Flash!'. (ETA: 2-4 minutes)
+
+Once you've successfully flashed the .iso image into the USB Stick, proceed
+to the next step.
+
+Okay, so you've successfully created a bootable drive, before we abandon
+Windows entirely, make sure to save the Product Key somewhere, preferably
+in our SharePoint workspace, 'Onboarding' folder, in the word doc labeled,
+'Product Keys.docx'.
+
+In order to do this, open up terminal and paste:
+
+wmic path SoftwareLicensingService get OA3xOriginalProductKey
+
+press Enter to execute the command and it should show your Windows 11 product
+key.
+
+Once you've successfully stored your product key somewhere safe--Reboot
+the device. Once the computer has turned back on, Immediately press F2, until
+prompted in the BIOS. 
+
+Once you're in the BIOS, look for an option that states, 'More Settings' and 
+check to see if Secure Boot is Enabled, if it is, disable it.
+
+Following this save and exit, then proceed to the Boot Manager.
+
+In order to access the Boot Manager, spam F12 as the device is turning back on.
+Once you find yourself in the Boot Manager, select the USB Device.
+
+Congratulations, now you're on your way to Installing PopOS on your device.
+
+Follow through with all of the steps indicated and make sure to wipe your 
+existing drive with Windows installed on it. If it asks if you want to 
+wipe the drive+encrypt, select yes. 
+
+Continue setting up PopOS then proceed to the next step.
+
+Once you've successfully setup PopOS, install Google Chrome, as it works the
+best with what we'll be using for this project. 
+
+Once you've installed Google Chrome, now is the time to open up the terminal.
+
+Open up the terminal and run:
+
+sudo apt install git
+
+Following this, it is now time to install miniconda.
+
+Go to:
+
+https://docs.conda.io/en/latest/miniconda.html#linux-installers
+
+Select, 'Miniconda3 Linux 64-bit'
+
+following this go to where you downloaded the file and right click on Files.
+
+Right click the surrounding area in the folder and select, 'Open in Terminal'.
+
+In the terminal window, run:
+bash Miniconda3-latest-Linux-x86_64.sh (Replace 'Miniconda3-latest-Linux, with
+the name of your file in the directory).
+
+Follow the prompts on the installer screens. 
+
+Once finished, close and re-open the terminal window and run the command,
+'conda list' to confirm miniconda is installed correctly.
+
+Once you've successfully completed this task, go to:
+https://edcarp.github.io/introduction-to-conda-for-data-scientists/05-configuration/index.html
+
+and type all of the bash commands in your terminal.
+
+Following this step go to:
+
+https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_local
+
+and follow the installation instructions, run each line of code, one by one.
+
+Now that you've both installed miniconda and cuda 11.8, now its time to make
+your own deveffect conda environment.
+
+In order to do this, run the following in the terminal:
+
+conda create --name deveffect (press y when prompted '[y]/n')
+
+activate said dev environment by running the following in the terminal:
+
+conda activate deveffect
+
+Congratulations! You're now in your own designated deveffect environment.
+
+Following this it, install jupyterlab inside the environment (deveffect),
+by running:
+
+sudo apt install jupyterlab
+
+Once you've successfully installed jupyterlab, now it is time to install
+pytorch by running the following in the terminal:
+
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+
+(Make sure you've still in the deveffect environment)
+
+Congratulations! You've accomplished all of the pre-reqs!
+
+Following all of this, lastly run in the terminal:
+
+jupyter lab
+
+You should be prompted to your very own jupyter lab notebook.
+
+Create a new folder named, 'Workspace' and then you're finally done with the
+initial steps.
